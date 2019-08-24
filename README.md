@@ -29,4 +29,23 @@
 - 用当前用气量减去临时变量中的用气量算出聚合数据，加入相应list
 - 将list组合构造数据帧，并输出到`.csv`文件
 
-**注：目前实现两分钟一次频率的数据，本机程序运行时间为610秒，其他频率数据后续将会继续进行测试**
+### 1.2 取时间方法
+
+时间信息经过`to_datetime`函数转换成标准格式，类型为时间戳类型。
+
+取时间方法为先取行数据，再通过列名取时间戳数据，最后取小时、天、月信息。
+
+例如：
+```python
+# 取第一条数据作为临时数据，此后该变量暂存，小时、日、月起始时间和用气量
+hourTemp = dfInput.iloc[0]['Data_Date']
+dayTemp = dfInput.iloc[0]['Data_Date']
+monthTemp = dfInput.iloc[0]['Data_Date']
+hourSumTemp = dfInput.iloc[0]['Working_Sum']
+daySumTemp = dfInput.iloc[0]['Working_Sum']
+monthSumTemp = dfInput.iloc[0]['Working_Sum']
+```
+
+通过测试，该方法比取数据帧列成员再取行信息的方法运行效率高。
+
+**注：目前实现两分钟一次频率的数据，本机程序运行时间为90秒，其他频率数据后续将会继续进行测试**
