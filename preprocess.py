@@ -154,7 +154,7 @@ def aggregate_iterator(strPath):
 	dfMonthOutput.to_csv('./result/month.csv', encoding="utf_8_sig")
 
 # 聚合函数，并输出标准格式文件
-def aggregate_iterator_allin(strPath, targetPath):
+def aggregate_iterator_multi(strPath, targetPath):
 	# 小时，日，月时间及用气量列表
 	startHourList = []
 	endHourList = []
